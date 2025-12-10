@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-key="title">سياسة الخصوصية - PassManger</title>
+    <meta name="description" content="PassManger - نظام شامل لحماية البيانات الشخصية" />
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .header .badge {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            border-right: 5px solid #667eea;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .section ul {
+            padding-right: 20px;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+            padding: 8px 0;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 25px;
+            border-left: 5px solid #667eea;
+        }
+
+        .card h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .feature-box {
+            background: #e8f4fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 2px solid #3498db;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #ffc107;
+            margin: 15px 0;
+        }
+
+        .security-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .security-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+        }
+
+        .security-card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .language-selector {
+            background: #f1f8e9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .lang-btn {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .lang-btn.active {
+            background: #2e7d32;
+            font-weight: bold;
+        }
+
+        .translation-content {
+            display: none;
+        }
+
+        .translation-content.active {
+            display: block;
+        }
+
+        .advanced-toggle {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .advanced-toggle:hover {
+            background: #0056b3;
+        }
+
+        .advanced-content {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: #f0f8ff;
+            border-radius: 8px;
+            border: 1px solid #007bff;
+        }
+
+        .advanced-content.show {
+            display: block;
+        }
+
+        .ltr-text {
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* English content specific styles */
+        .english-content {
+            direction: ltr;
+            text-align: left;
+        }
+
+        .english-content .section {
+            border-right: none;
+            border-left: 5px solid #667eea;
+        }
+
+        .english-content .section ul {
+            padding-right: 0;
+            padding-left: 20px;
+        }
+
+        .english-content .card {
+            border-right: none;
+            border-left: 5px solid #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .language-selector {
+                padding: 15px;
+            }
+
+            .lang-btn {
+                display: block;
+                margin: 5px auto;
+                width: 80%;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .english-content .card {
+                border-left: none;
+                border-right: 5px solid #667eea;
+            }
+
+            .english-content .card ul {
+                padding-right: 0;
+                padding-left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 id="page-title">سياسة الخصوصية - PassManger</h1>
+            <p id="page-subtitle">PassManger - حماية بياناتك الشخصية</p>
+            <span id="page-badge">آخر تحديث: 2025-12-10 | سياسة خصوصية شاملة</span>
+        </div>
+
+        <div class="language-selector">
+            <button id="lang-ar" class="lang-btn active">العربية</button>
+            <button id="lang-fa" class="lang-btn">فارسی</button>
+            <button id="lang-en" class="lang-btn">English</button>
+            <button id="lang-fr" class="lang-btn">Français</button>
+        </div>
+
+        <div class="content">
+            <!-- Arabic Content -->
+            <div id="ar-content" class="translation-content active">
+                <div class="section">
+                    <h2 data-key="introduction_title">مقدمة</h2>
+                    <p data-key="introduction">في عصر أصبحت فيه حياتنا الرقمية جزءاً لا يتجزأ من واقعنا اليومي، تحولت الهوية الرقمية إلى أحد أهم الأصول الشخصية التي تتطلب حماية مستمرة. يُعتبر تطبيق PassManger نظاماً متكاملاً لحماية البيانات الشخصية، مصمم ليكون الدرع الواقي لكل المعلومات الحساسة معزولاً عن العالم الرقمي.</p>
+                </div>
+
+                <div class="section">
+                    <h2 data-key="evolution_title">تطور نظام الحماية</h2>
+                    <p data-key="evolution_desc">نظام PassManger يتطور باستمرار ليوفر أعلى مستويات الحماية. من المراحل الأولى التي ركزت على المفاتيح الديناميكية، إلى المرحلة الحالية مع الدوال الثابتة للتوافق، وصولاً إلى المراحل المستقبلية مع التعمية الديناميكية الكاملة.</p>
+                    <div class="mermaid" data-graph="evolution">
+                        graph TD
+                            A[المرحلة السابقة: مفاتيح ديناميكية] --> B[المرحلة الحالية: دوال ثابتة]
+                            B --> C[المرحلة القادمة: تعمية ديناميكية]
+                    </div>
+                    <button class="advanced-toggle" onclick="toggleAdvanced('evolution')" data-key="evolution_advanced_title">شرح متقدم للتطور</button>
+                    <div id="evolution-advanced" class="advanced-content">
+                        <p><strong data-key="evolution_previous">المرحلة السابقة:</strong><span data-key="evolution_previous_extra"> كل معلومة محمية بمفتاح ديناميكي فريد في قاعدة البيانات، وليس مفتاح ثابت للبيانات الحساسة.</span></p>
+                        <p><strong data-key="evolution_current">المرحلة الحالية:</strong><span data-key="evolution_current_extra"> استخدام دوال ثابتة لضمان التوافق مع نقل البيانات من النسخ القديمة.</span></p>
+                        <p><strong data-key="evolution_future">المرحلة القادمة:</strong><span data-key="evolution_future_extra"> تعمية ديناميكية تغير سلوكها باستمرار، مدعومة بمكتبات مخصصة محمية من الديباك.</span></p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 data-key="section1_title">1. لا يتم مشاركة بياناتك مع أحد</h2>
+                    <div class="feature-box">
+                        <p><strong data-key="section1_desc">العمل على جهازك فقط:</strong><span data-key="section1_desc_extra"> كل بياناتك تبقى على جهازك الشخصي ولا تذهب إلى الإنترنت أو إلى أي مكان آخر.</span></p>
+                    </div>
+                    <ul>
+                        <li data-key="section1_list1">لا يتم إرسال بياناتك إلى أي مكان</li>
+                        <li data-key="section1_list2">النظام يعمل فقط على جهازك</li>
+                        <li data-key="section1_list3">لا أحد يستطيع رؤية بياناتك إلا أنت</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2 data-key="section2_title">2. حماية قوية حسب رغبتك</h2>
+                    <div class="feature-box">
+                        <p><strong data-key="section2_desc">اختيارك لقوة الحماية:</strong><span data-key="section2_desc_extra"> يمكنك اختيار مدى قوة الحماية التي تريدها لبياناتك.</span></p>
+                    </div>
+                    <ul>
+                        <li data-key="section2_list1">اختيار قوة الحماية حسب رغبتك</li>
+                        <li data-key="section2_list2">نظام حماية قوي ومرن</li>
+                        <li data-key="section2_list3">متوافق مع احتياجاتك الشخصية</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2 data-key="section3_title">3. حماية خاصة لكل معلومة</h2>
+                    <div class="highlight">
+                        <p><strong data-key="section3_desc">كل معلومة لها حماية خاصة:</strong><span data-key="section3_desc_extra"> يتم حماية كل معلومة بوسيلة حماية خاصة بها، مما يجعل من الصعب اختراقها.</span></p>
+                    </div>
+                    <ul>
+                        <li data-key="section3_list1">كل معلومة تُحمى بطريقة مختلفة</li>
+                        <li data-key="section3_list2">نظام حماية متقدم</li>
+                        <li data-key="section3_list3">صعوبة كبيرة في اختراق البيانات</li>
+                    </ul>
+                    <button class="advanced-toggle" onclick="toggleAdvanced('special-protection')" data-key="section3_advanced_title">شرح متقدم للحماية الخاصة</button>
+                    <div id="special-protection-advanced" class="advanced-content">
+                        <p data-key="section3_advanced">في المراحل المتقدمة، كل معلومة محمية بتعمية ديناميكية تغير سلوكها، مدعومة بمكتبات مخصصة محمية من الديباك. هذا يجعل من المستحيل كشف البيانات دون معرفة كود البرنامج أو المفاتيح.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 data-key="section4_title">4. حماية مخفية وسرية</h2>
+                    <div class="feature-box">
+                        <p><strong data-key="section4_desc">دوال تعمية مخفية:</strong><span data-key="section4_desc_extra"> يتم استخدام مكتبات تعمية خاصة مخفية المنطق في مكتبات محمية، وتقوم بحماية مفاتيح الحماية نفسها.</span></p>
+                    </div>
+                    <ul>
+                        <li data-key="section4_list1">دوال تعمية مخفية المنطق</li>
+                        <li data-key="section4_list2">مكتبات محمية من التفكيك</li>
+                        <li data-key="section4_list3">تحمي مفاتيح الحماية من السرقة</li>
+                        <li data-key="section4_list4">نظام دفاعي ضد محاولات الاختراق</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2 data-key="section5_title">5. سؤالك الشخصي لاستعادة الحساب</h2>
+                    <div class="highlight">
+                        <p><strong data-key="section5_desc">سؤال وإجابة سرية:</strong><span data-key="section5_desc_extra"> يمكنك تحديد سؤالك السري والإجابة السرية غير المتداولة عنك في مواقع التواصل الاجتماعي، لأنها هي مفتاح أمانك لاستعادة حسابك إذا نسيت كلمة المرور.</span></p>
+                    </div>
+                    <ul>
+                        <li data-key="section5_list1">تحديد سؤال الاستعادة بنفسك</li>
+                        <li data-key="section5_list2">إجابة السؤال تعرفها أنت فقط</li>
+                        <li data-key="section5_list3">نظام استعادة آمن</li>
+                        <li data-key="section5_list4">حماية إضافية ضد الدخول غير المصرح به</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2 data-key="section6_title">6. مفاتيح وملاحظات خاصة</h2>
+                    <div class="feature-box">
+                        <p><strong data-key="section6_desc">مفاتيح وملاحظات للتذكر:</strong><span data-key="section6_desc_extra"> تعد الملاحظة كمفتاح لتبين لك الغرض من المعلومة المخزنة والمشفر في هذا القسم والحقل، "ليكون درعك الخاص في التحليل واستنتاج" على ماذا يدل هذا النص بعد فك تشفيره عن الضغط مطولا على الملاحظة.</span></p>
+                    </div>
+                    <ul>
+                        <li data-key="section6_list1">لا تظهر المعلومات الحقيقية</li>
+                        <li data-key="section6_list2">مفاتيح وملاحظات تذكيرية فقط</li>
+                        <li data-key="section6_list3">البيانات الحقيقية مشفرة</li>
+                        <li data-key="section6_list4">الملفات مخفية عن العينين</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2 data-key="section7_title">7. نظام التحقق من سلامة البيانات</h2>
+                    <div class="highlight">
+                        <p><strong data-key="section7_desc">التحقق من سلامة البيانات:</strong><span data-key="section7_desc_extra"> في النسخ المستقبلية، سنضيف نظام هاش للتحقق من سلامة البيانات المعماة، مما يسمح بكشف أي تغييرات غير مصرح بها.</span></p>
+                    </div>
+                    <ul>
+                        <li data-key="section7_list1">استخدام هاش للتحقق من التغييرات</li>
+                        <li data-key="section7_list2">حماية من التعديل غير المصرح به</li>
+                        <li data-key="section7_list3">التحقق من أصالة البيانات</li>
+                        <li data-key="section7_list4">نظام مستقبلي لتعزيز الأمان</li>
+                    </ul>
+                </div>
+
+                <div class="security-features">
+                    <div class="security-card">
+                        <h3 data-key="privacy_title">الخصوصية التامة</h3>
+                        <p data-key="privacy_desc">لا يتم جمع أو مشاركة أي بيانات مع أي شخص. كل شيء يبقى على جهازك.</p>
+                    </div>
+
+                    <div class="security-card">
+                        <h3 data-key="security_title">الأمان المتقدم</h3>
+                        <p data-key="security_desc">نظام حماية قوي مع وسائل حماية مخفية ونظام أسماء ذكي.</p>
+                    </div>
+
+                    <div class="security-card">
+                        <h3 data-key="control_title">التحكم الكامل</h3>
+                        <p data-key="control_desc">أنت تتحكم في كل إعدادات الحماية وتحديد سؤال الاستعادة.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 data-key="rights_title">حقوقك كمستخدم</h2>
+                    <ul>
+                        <li data-key="rights_list1">الحق في التحكم في بياناتك</li>
+                        <li data-key="rights_list2">الحق في تحديد إعدادات الأمان</li>
+                        <li data-key="rights_list3">الحق في النسخ الاحتياطي</li>
+                        <li data-key="rights_list4">الحق في حذف البيانات بشكل آمن</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2 data-key="developer_title">معلومات المطور</h2>
+                    <div class="feature-box">
+                        <p><strong data-key="developer_name">المطور:</strong> mrt.alqaem</p>
+                        <p><strong data-key="developer_email">البريد الإلكتروني:</strong> mrt.alqaem@live.com</p>
+                        <p><strong data-key="developer_phone">رقم الهاتف:</strong> <span dir="ltr">+964-7713221517</span></p>
+                        <p><strong data-key="developer_update">تاريخ آخر تحديث:</strong> 2025/12/3</p>
+                    </div>
+                </div>
+            </div>
+
+        <footer>
+            <p data-key="footer">© 2025 PassManger - All Rights Reserved</p>
+            <p data-key="footer_sub">Comprehensive Digital Protection System</p>
+            <div class="contact-links">
+                <a href="https://u.pcloud.link/publink/show?code=XZSSLC5ZxVDvXLBRpHQAvojqEfID9HnHilXy" data-key="download_link">تحميل التطبيق</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        let currentLang = 'ar';
+        let translations = {};
+
+        // تحميل الترجمات
+        fetch('languages.json')
+            .then(response => {
+                console.log('Fetch response:', response);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Loaded translations:', data);
+                translations = data;
+                updateLanguage(currentLang);
+                // بناء المخطط الأولي
+                const mermaidElements = document.querySelectorAll('.mermaid');
+                mermaidElements.forEach(async (element) => {
+                    const graphType = element.getAttribute('data-graph');
+                    if (graphType === 'evolution') {
+                        const graphText = `graph TD
+                            A[${translations[currentLang].evolution_graph_a}] --> B[${translations[currentLang].evolution_graph_b}]
+                            B --> C[${translations[currentLang].evolution_graph_c}]`;
+                        const { svg } = await mermaid.render('evolution-graph', graphText);
+                        element.innerHTML = svg;
+                    }
+                });
+            })
+            .catch(error => console.error('Error loading translations:', error));
+
+        // تحديث اللغة
+        function updateLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+
+            // تحديث المخططات Mermaid
+            const mermaidElements = document.querySelectorAll('.mermaid');
+            mermaidElements.forEach(async (element) => {
+                const graphType = element.getAttribute('data-graph');
+                if (graphType === 'evolution') {
+                    const graphText = `graph TD
+                        A[${translations[lang].evolution_graph_a}] --> B[${translations[lang].evolution_graph_b}]
+                        B --> C[${translations[lang].evolution_graph_c}]`;
+                    const { svg } = await mermaid.render('evolution-graph-' + lang, graphText);
+                    element.innerHTML = svg;
+                }
+            });
+
+        // تحديث العنوان والوصف والشارة
+            if (translations[lang]) {
+                document.getElementById('page-title').innerHTML = translations[lang].title || 'سياسة الخصوصية - PassManger';
+                document.getElementById('page-subtitle').innerHTML = translations[lang].subtitle || 'PassManger - حماية بياناتك الشخصية';
+                document.getElementById('page-badge').innerHTML = translations[lang].badge || 'آخر تحديث: 2025-12-10 | سياسة خصوصية شاملة';
+            }
+
+            // تحديث اتجاه النص للفارسية والفرنسية
+            if (lang === 'fa') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('lang', 'fa');
+            } else if (lang === 'ar') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('lang', 'ar');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', lang);
+            }
+
+            // تحديث الأزرار النشطة
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`lang-${lang}`).classList.add('active');
+        }
+
+        // معالجات الأزرار
+        document.getElementById('lang-ar').addEventListener('click', () => updateLanguage('ar'));
+        document.getElementById('lang-en').addEventListener('click', () => updateLanguage('en'));
+        document.getElementById('lang-fa').addEventListener('click', () => updateLanguage('fa'));
+        document.getElementById('lang-fr').addEventListener('click', () => updateLanguage('fr'));
+
+        function toggleAdvanced(sectionId) {
+            const content = document.getElementById(sectionId + '-advanced');
+            content.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
