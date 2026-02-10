@@ -721,7 +721,7 @@
 
         // تحميل إعدادات التطبيق من config.json
         function loadAppConfig() {
-            fetch('.env_config')
+            fetch('env_config')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Failed to load config');
