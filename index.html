@@ -282,6 +282,92 @@
                 padding-left: 20px;
             }
         }
+
+        /* أزرار التحميل */
+        .download-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1em;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(76, 175, 80, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(76, 175, 80, 0.4);
+        }
+
+        /* أزرار الأدوات */
+        .tool-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1em;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
+        }
+
+        .tool-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        /* تحسين البطاقات */
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* تحسين feature-box داخل البطاقات */
+        .card .feature-box {
+            background: #f0f4ff;
+            border: 1px solid #d0d7ff;
+            margin-bottom: 15px;
+        }
+
+        .card .feature-box p {
+            margin: 8px 0;
+            font-size: 0.95em;
+        }
+
+        .card .feature-box strong {
+            color: #2c3e50;
+        }
+
+        /* تحسين القوائم داخل feature-box */
+        .feature-box ul {
+            margin: 10px 0;
+            padding-right: 20px;
+        }
+
+        .feature-box li {
+            margin: 5px 0;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .feature-box li::marker {
+            color: #667eea;
+        }
     </style>
 </head>
 <body>
@@ -443,12 +529,130 @@
                 </div>
 
                 <div class="section">
+                    <h2 data-key="downloads_tools_title">📥 التحميل والأدوات الأمنية</h2>
+
+                    <div class="card-grid">
+                        <!-- بطاقة تحميل التطبيق -->
+                        <div class="card">
+                            <h3 data-key="app_main_title">📱 PassManger - التطبيق الرئيسي</h3>
+                            <div class="feature-box">
+                                <p><strong data-key="current_version">النسخة الحالية:</strong> <span id="app-current-version">1.1.2</span></p>
+                                <p><strong data-key="latest_version">آخر إصدار:</strong> <span id="app-latest-version">1.1.2</span></p>
+                                <p><strong data-key="release_date">تاريخ الإصدار:</strong> <span id="app-release-date">2025/12/03</span></p>
+                                <p><strong data-key="app_size">الحجم:</strong> <span id="app-size">~15 MB</span></p>
+                                <p><strong data-key="system">النظام:</strong> <span id="app-system">Windows</span></p>
+                            </div>
+                            <a id="app-download-link"
+                               target="_blank"
+                               class="download-btn"
+                               data-key="download_app_btn">
+                                ⬇️ تحميل التطبيق
+                            </a>
+                            <p style="margin-top: 10px; font-size: 0.9em; color: #666;" data-key="verified_file">
+                                🔒 ملف موثق وآمن 100%
+                            </p>
+                        </div>
+
+                        <!-- بطاقة مولد المفاتيح -->
+                        <div class="card">
+                            <h3 data-key="keygen_title">🔑 مولد المفاتيح الآمن</h3>
+                            <div class="feature-box">
+                                <p><strong data-key="keygen_desc">الوصف:</strong><span data-key="keygen_desc_text"> أداة متقدمة لتوليد مفاتيح أمنية طويلة للاستخدامات العامة</span></p>
+                                <p><strong data-key="key_length">طول المفتاح:</strong><span data-key="key_length_text"> يصل إلى 512 حرف</span></p>
+                                <p><strong data-key="customization">التخصيص:</strong><span data-key="customization_text"> تصميم المفتاح حسب المتطلبات</span></p>
+                                <p><strong data-key="usages">الاستخدامات:</strong>
+                                    <br><span data-key="usage_encryption">• مفاتيح التشفير</span>
+                                    <br><span data-key="usage_api">• مفاتيح API</span>
+                                    <br><span data-key="usage_security">• رموز الأمان</span>
+                                    <br><span data-key="usage_signature">• مفاتيح التوقيع الرقمي</span>
+                                </p>
+                                <p><strong data-key="security">الأمان:</strong><span data-key="security_text"> تشفير محلي بالكامل - لا يتم إرسال أي بيانات للإنترنت</span></p>
+                            </div>
+                            <a id="keygen-link"
+                               target="_blank"
+                               class="tool-btn"
+                               data-key="visit_keygen">
+                                🔑 زيارة المولد
+                            </a>
+                        </div>
+
+                        <!-- بطاقة مولد الأرقام العشوائية -->
+                        <div class="card">
+                            <h3 data-key="random_gen_title">🎲 مولد الأرقام العشوائية</h3>
+                            <div class="feature-box">
+                                <p><strong data-key="random_gen_desc">الوصف:</strong><span data-key="random_gen_desc_text"> توليد أرقام عشوائية آمنة لأغراض متعددة</span></p>
+                                <p><strong data-key="random_gen_usage">الاستخدام:</strong><span data-key="random_gen_usage_text"> كلمات مرور، رموز OTP، إلخ</span></p>
+                                <p><strong data-key="random_gen_security">الأمان:</strong><span data-key="random_gen_security_text"> خوارزمية CSPRNG</span></p>
+                            </div>
+                            <a id="random-gen-link"
+                               target="_blank"
+                               class="tool-btn"
+                               data-key="use_random_gen">
+                                🎲 استخدم المولد
+                            </a>
+                        </div>
+
+                        <!-- بطاقة أدوات أمان إضافية -->
+                        <div class="card">
+                            <h3 data-key="additional_tools_title">🛡️ أدوات أمان إضافية</h3>
+                            <div class="feature-box">
+                                <p><strong data-key="file_check">فحص الملفات:</strong><span data-key="file_check_text"> التحقق من سلامة الملفات</span></p>
+                                <p><strong data-key="encryption_tools">التشفير:</strong><span data-key="encryption_tools_text"> أدوات تشفير إضافية</span></p>
+                                <p><strong data-key="verification">التحقق:</strong><span data-key="verification_text"> التحقق من سلامة البيانات</span></p>
+                            </div>
+                            <button class="tool-btn" onclick="showSecurityTools()" data-key="show_tools">
+                                🛡️ عرض الأدوات
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- معلومات إضافية -->
+                    <div class="highlight">
+                        <h4 data-key="important_notes">📌 ملاحظات هامة:</h4>
+                        <ul>
+                            <li data-key="note1">جميع الأدوات تعمل محلياً على جهازك ولا ترسل أي بيانات للإنترنت</li>
+                            <li data-key="note2">تأكد من تحميل التطبيق من الرابط الرسمي فقط</li>
+                            <li data-key="note3">يُنصح باستخدام مولد المفاتيح قبل إنشاء حساب جديد</li>
+                            <li data-key="note4">احتفظ بنسخة احتياطية من مفاتيحك في مكان آمن</li>
+                            <li data-key="note5">مولد المفاتيح يدعم توليد مفاتيح بطول يصل إلى 512 حرف</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 data-key="keygen_capabilities_title">🔑 قدرات مولد المفاتيح</h2>
+                    <div class="mermaid" data-graph="keygen">
+                        graph TD
+                            A[مولد المفاتيح<br/>KeyGen] --> B[تخصيص الطول]
+                            A --> C[تخصيص الأحرف]
+
+                            B --> B1[8 - 512 حرف]
+                            C --> C1[أحرف كبيرة]
+                            C --> C2[أحرف صغيرة]
+                            C --> C3[أرقام]
+                            C --> C4[رموز خاصة]
+
+                            B1 --> E[مفتاح آمن]
+                            C1 --> E
+                            C2 --> E
+                            C3 --> E
+                            C4 --> E
+
+                            E --> F[🔒 استخدامات متعددة]
+                            F --> G[تشفير البيانات]
+                            F --> H[مفاتيح API]
+                            F --> I[رموز OTP]
+                            F --> J[توقيع رقمي]
+                    </div>
+                </div>
+
+                <div class="section">
                     <h2 data-key="developer_title">معلومات المطور</h2>
                     <div class="feature-box">
-                        <p><strong data-key="developer_name">المطور:</strong> mrt.alqaem</p>
-                        <p><strong data-key="developer_email">البريد الإلكتروني:</strong> mrt.alqaem@live.com</p>
-                        <p><strong data-key="developer_phone">رقم الهاتف:</strong> <span dir="ltr">+964-7713221517</span></p>
-                        <p><strong data-key="developer_update">تاريخ آخر تحديث:</strong> 2025/12/3</p>
+                        <p><strong data-key="developer_name">المطور:</strong> <span id="dev-name">mrt.alqaem</span></p>
+                        <p><strong data-key="developer_email">البريد الإلكتروني:</strong> <span id="dev-email">mrt.alqaem@live.com</span></p>
+                        <p><strong data-key="developer_phone">رقم الهاتف:</strong> <span dir="ltr" id="dev-phone">+964-7713221517</span></p>
+                        <p><strong data-key="developer_update">تاريخ آخر تحديث:</strong> <span id="dev-update">2025/12/3</span></p>
                     </div>
                 </div>
             </div>
@@ -456,9 +660,7 @@
         <footer>
             <p data-key="footer">© 2025 PassManger - All Rights Reserved</p>
             <p data-key="footer_sub">Comprehensive Digital Protection System</p>
-            <div class="contact-links">
-                <a href="https://u.pcloud.link/publink/show?code=XZSSLC5ZxVDvXLBRpHQAvojqEfID9HnHilXy" data-key="download_link">تحميل التطبيق</a>
-            </div>
+           
         </footer>
     </div>
 
@@ -476,6 +678,8 @@
                 console.log('Loaded translations:', data);
                 translations = data;
                 updateLanguage(currentLang);
+                // تحميل المتغيرات من config.json
+                loadAppConfig();
                 // بناء المخطط الأولي
                 const mermaidElements = document.querySelectorAll('.mermaid');
                 mermaidElements.forEach(async (element) => {
@@ -486,10 +690,73 @@
                             B --> C[${translations[currentLang].evolution_graph_c}]`;
                         const { svg } = await mermaid.render('evolution-graph', graphText);
                         element.innerHTML = svg;
+                    } else if (graphType === 'keygen') {
+                        const graphText = `graph TD
+                            A[${translations[currentLang].keygen_graph_a}] --> B[${translations[currentLang].keygen_graph_b}]
+                            A --> C[${translations[currentLang].keygen_graph_c}]
+
+                            B --> B1[${translations[currentLang].keygen_graph_b1}]
+                            C --> C1[${translations[currentLang].keygen_graph_c1}]
+                            C --> C2[${translations[currentLang].keygen_graph_c2}]
+                            C --> C3[${translations[currentLang].keygen_graph_c3}]
+                            C --> C4[${translations[currentLang].keygen_graph_c4}]
+
+                            B1 --> E[${translations[currentLang].keygen_graph_e}]
+                            C1 --> E
+                            C2 --> E
+                            C3 --> E
+                            C4 --> E
+
+                            E --> F[${translations[currentLang].keygen_graph_f}]
+                            F --> G[${translations[currentLang].keygen_graph_g}]
+                            F --> H[${translations[currentLang].keygen_graph_h}]
+                            F --> I[${translations[currentLang].keygen_graph_i}]
+                            F --> J[${translations[currentLang].keygen_graph_j}]`;
+                        const { svg } = await mermaid.render('keygen-graph', graphText);
+                        element.innerHTML = svg;
                     }
                 });
             })
             .catch(error => console.error('Error loading translations:', error));
+
+        // تحميل إعدادات التطبيق من config.json
+        function loadAppConfig() {
+            fetch('.env_config')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to load config');
+                    }
+                    return response.json();
+                })
+                .then(config => {
+                    // تحديث معلومات الإصدار
+                    document.getElementById('app-current-version').textContent = config.version.current;
+                    document.getElementById('app-latest-version').textContent = config.version.latest;
+                    document.getElementById('app-release-date').textContent = config.version.releaseDate;
+                    document.getElementById('app-size').textContent = config.version.size;
+                    document.getElementById('app-system').textContent = config.version.system;
+
+                    // تحديث روابط التحميل
+                    document.getElementById('app-download-link').href = config.downloadUrl;
+                    document.getElementById('footer-download-link').href = config.downloadUrl;
+
+                    // تحديث روابط الأدوات
+                    document.getElementById('keygen-link').href = config.keygenUrl;
+                    document.getElementById('random-gen-link').href = config.keygenUrl;
+
+                    // تحديث معلومات المطور
+                    document.getElementById('dev-name').textContent = config.developer.name;
+                    document.getElementById('dev-email').textContent = config.developer.email;
+                    document.getElementById('dev-phone').textContent = config.developer.phone;
+                    document.getElementById('dev-update').textContent = config.developer.lastUpdate;
+
+                    console.log('App config loaded successfully');
+                })
+                .catch(error => {
+                    console.error('Error loading config :', error);
+                    console.warn('Using default values');
+                });
+        }
 
         // تحديث اللغة
         function updateLanguage(lang) {
@@ -510,6 +777,30 @@
                         A[${translations[lang].evolution_graph_a}] --> B[${translations[lang].evolution_graph_b}]
                         B --> C[${translations[lang].evolution_graph_c}]`;
                     const { svg } = await mermaid.render('evolution-graph-' + lang, graphText);
+                    element.innerHTML = svg;
+                } else if (graphType === 'keygen') {
+                    const graphText = `graph TD
+                        A[${translations[lang].keygen_graph_a}] --> B[${translations[lang].keygen_graph_b}]
+                        A --> C[${translations[lang].keygen_graph_c}]
+
+                        B --> B1[${translations[lang].keygen_graph_b1}]
+                        C --> C1[${translations[lang].keygen_graph_c1}]
+                        C --> C2[${translations[lang].keygen_graph_c2}]
+                        C --> C3[${translations[lang].keygen_graph_c3}]
+                        C --> C4[${translations[lang].keygen_graph_c4}]
+
+                        B1 --> E[${translations[lang].keygen_graph_e}]
+                        C1 --> E
+                        C2 --> E
+                        C3 --> E
+                        C4 --> E
+
+                        E --> F[${translations[lang].keygen_graph_f}]
+                        F --> G[${translations[lang].keygen_graph_g}]
+                        F --> H[${translations[lang].keygen_graph_h}]
+                        F --> I[${translations[lang].keygen_graph_i}]
+                        F --> J[${translations[lang].keygen_graph_j}]`;
+                    const { svg } = await mermaid.render('keygen-graph-' + lang, graphText);
                     element.innerHTML = svg;
                 }
             });
@@ -547,6 +838,11 @@
         function toggleAdvanced(sectionId) {
             const content = document.getElementById(sectionId + '-advanced');
             content.classList.toggle('show');
+        }
+
+        function showSecurityTools() {
+            const message = translations[currentLang]?.coming_soon || 'قريباً: سيتم إضافة المزيد من أدوات الأمان المتقدمة\n\n- فاحص الملفات\n- أداة التشفير\n- أداة التحقق من البيانات';
+            alert(message);
         }
     </script>
 </body>
