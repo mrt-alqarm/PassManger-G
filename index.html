@@ -649,10 +649,10 @@
                 <div class="section">
                     <h2 data-key="developer_title">معلومات المطور</h2>
                     <div class="feature-box">
-                        <p><strong data-key="developer_name">المطور:</strong> <span id="dev-name">mrt.alqaem</span></p>
-                        <p><strong data-key="developer_email">البريد الإلكتروني:</strong> <span id="dev-email">mrt.alqaem@live.com</span></p>
-                        <p><strong data-key="developer_phone">رقم الهاتف:</strong> <span dir="ltr" id="dev-phone">+964-7713221517</span></p>
-                        <p><strong data-key="developer_update">تاريخ آخر تحديث:</strong> <span id="dev-update">2025/12/3</span></p>
+                        <p><strong>المطور:</strong> <span id="dev-name">mrt.alqaem</span></p>
+                        <p><strong>البريد الإلكتروني:</strong> <span id="dev-email">mrt.alqaem@live.com</span></p>
+                        <p><strong>رقم الهاتف:</strong> <span dir="ltr" id="dev-phone">+964-7713221517</span></p>
+                        <p><strong>تاريخ آخر تحديث:</strong> <span id="dev-update">2025/12/3</span></p>
                     </div>
                 </div>
             </div>
@@ -660,106 +660,168 @@
         <footer>
             <p data-key="footer">© 2025 PassManger - All Rights Reserved</p>
             <p data-key="footer_sub">Comprehensive Digital Protection System</p>
-           
+            
         </footer>
     </div>
 
     <script>
+        console.log('🔒 [LOCK] Page loaded, starting initialization...');
         let currentLang = 'ar';
         let translations = {};
+        let appConfig = null; // تخزين config في متغير عام
+        console.log('🔒 [LOCK] Initial state - currentLang:', currentLang, 'appConfig:', appConfig);
 
         // تحميل الترجمات
+        console.log('🔒 [LOCK] Starting to load translations from server...');
         fetch('languages.json')
             .then(response => {
-                console.log('Fetch response:', response);
+                console.log('🔒 [LOCK] Translations response received:', response.status);
                 return response.json();
             })
             .then(data => {
-                console.log('Loaded translations:', data);
+                console.log('🔒 [LOCK] Translations data received from server:', data);
                 translations = data;
-                updateLanguage(currentLang);
-                // تحميل المتغيرات من config.json
-                loadAppConfig();
-                // بناء المخطط الأولي
-                const mermaidElements = document.querySelectorAll('.mermaid');
-                mermaidElements.forEach(async (element) => {
-                    const graphType = element.getAttribute('data-graph');
-                    if (graphType === 'evolution') {
-                        const graphText = `graph TD
-                            A[${translations[currentLang].evolution_graph_a}] --> B[${translations[currentLang].evolution_graph_b}]
-                            B --> C[${translations[currentLang].evolution_graph_c}]`;
-                        const { svg } = await mermaid.render('evolution-graph', graphText);
-                        element.innerHTML = svg;
-                    } else if (graphType === 'keygen') {
-                        const graphText = `graph TD
-                            A[${translations[currentLang].keygen_graph_a}] --> B[${translations[currentLang].keygen_graph_b}]
-                            A --> C[${translations[currentLang].keygen_graph_c}]
+                // تحميل المتغيرات من env_config أولاً
+                loadAppConfig().then(() => {
+                    // بعد تحميل config، قم بتحديث اللغة
+                    updateLanguage(currentLang);
+                    // بناء المخطط الأولي
+                    const mermaidElements = document.querySelectorAll('.mermaid');
+                    mermaidElements.forEach(async (element) => {
+                        const graphType = element.getAttribute('data-graph');
+                        if (graphType === 'evolution') {
+                            const graphText = `graph TD
+                                A[${translations[currentLang].evolution_graph_a}] --> B[${translations[currentLang].evolution_graph_b}]
+                                B --> C[${translations[currentLang].evolution_graph_c}]`;
+                            const { svg } = await mermaid.render('evolution-graph', graphText);
+                            element.innerHTML = svg;
+                        } else if (graphType === 'keygen') {
+                            const graphText = `graph TD
+                                A[${translations[currentLang].keygen_graph_a}] --> B[${translations[currentLang].keygen_graph_b}]
+                                A --> C[${translations[currentLang].keygen_graph_c}]
 
-                            B --> B1[${translations[currentLang].keygen_graph_b1}]
-                            C --> C1[${translations[currentLang].keygen_graph_c1}]
-                            C --> C2[${translations[currentLang].keygen_graph_c2}]
-                            C --> C3[${translations[currentLang].keygen_graph_c3}]
-                            C --> C4[${translations[currentLang].keygen_graph_c4}]
+                                B --> B1[${translations[currentLang].keygen_graph_b1}]
+                                C --> C1[${translations[currentLang].keygen_graph_c1}]
+                                C --> C2[${translations[currentLang].keygen_graph_c2}]
+                                C --> C3[${translations[currentLang].keygen_graph_c3}]
+                                C --> C4[${translations[currentLang].keygen_graph_c4}]
 
-                            B1 --> E[${translations[currentLang].keygen_graph_e}]
-                            C1 --> E
-                            C2 --> E
-                            C3 --> E
-                            C4 --> E
+                                B1 --> E[${translations[currentLang].keygen_graph_e}]
+                                C1 --> E
+                                C2 --> E
+                                C3 --> E
+                                C4 --> E
 
-                            E --> F[${translations[currentLang].keygen_graph_f}]
-                            F --> G[${translations[currentLang].keygen_graph_g}]
-                            F --> H[${translations[currentLang].keygen_graph_h}]
-                            F --> I[${translations[currentLang].keygen_graph_i}]
-                            F --> J[${translations[currentLang].keygen_graph_j}]`;
-                        const { svg } = await mermaid.render('keygen-graph', graphText);
-                        element.innerHTML = svg;
-                    }
+                                E --> F[${translations[currentLang].keygen_graph_f}]
+                                F --> G[${translations[currentLang].keygen_graph_g}]
+                                F --> H[${translations[currentLang].keygen_graph_h}]
+                                F --> I[${translations[currentLang].keygen_graph_i}]
+                                F --> J[${translations[currentLang].keygen_graph_j}]`;
+                            const { svg } = await mermaid.render('keygen-graph', graphText);
+                            element.innerHTML = svg;
+                        }
+                    });
                 });
             })
-            .catch(error => console.error('Error loading translations:', error));
+            .catch(error => console.error('🔒 [LOCK] Error loading translations:', error));
 
         // تحميل إعدادات التطبيق من config.json
         function loadAppConfig() {
-            fetch('env_config')
+            console.log('🔒 [LOCK] Starting to load config from server...');
+            return fetch('env_config')
                 .then(response => {
+                    console.log('🔒 [LOCK] Server response received:', response.status);
                     if (!response.ok) {
                         throw new Error('Failed to load config');
                     }
                     return response.json();
                 })
                 .then(config => {
+                    console.log('🔒 [LOCK] Config data received from server:', config);
+                    // تخزين config في متغير عام
+                    appConfig = config;
+
                     // تحديث معلومات الإصدار
                     document.getElementById('app-current-version').textContent = config.version.current;
                     document.getElementById('app-latest-version').textContent = config.version.latest;
                     document.getElementById('app-release-date').textContent = config.version.releaseDate;
                     document.getElementById('app-size').textContent = config.version.size;
                     document.getElementById('app-system').textContent = config.version.system;
+                    console.log('🔒 [LOCK] Version info updated:', config.version);
 
                     // تحديث روابط التحميل
                     document.getElementById('app-download-link').href = config.downloadUrl;
-                    document.getElementById('footer-download-link').href = config.downloadUrl;
+                    console.log('🔒 [LOCK] Download link updated:', config.downloadUrl);
+
+                    // تحديث رقم النسخة في الفوتر (إذا كان العنصر موجوداً)
+                    const footerVersionEl = document.getElementById('footer-version');
+                    if (footerVersionEl) {
+                        footerVersionEl.textContent = config.version.current;
+                        console.log('🔒 [LOCK] Footer version updated:', config.version.current);
+                    }
 
                     // تحديث روابط الأدوات
                     document.getElementById('keygen-link').href = config.keygenUrl;
                     document.getElementById('random-gen-link').href = config.keygenUrl;
+                    console.log('🔒 [LOCK] Tool links updated:', config.keygenUrl);
 
                     // تحديث معلومات المطور
-                    document.getElementById('dev-name').textContent = config.developer.name;
-                    document.getElementById('dev-email').textContent = config.developer.email;
-                    document.getElementById('dev-phone').textContent = config.developer.phone;
-                    document.getElementById('dev-update').textContent = config.developer.lastUpdate;
+                    const devNameEl = document.getElementById('dev-name');
+                    const devEmailEl = document.getElementById('dev-email');
+                    const devPhoneEl = document.getElementById('dev-phone');
+                    const devUpdateEl = document.getElementById('dev-update');
 
-                    console.log('App config loaded successfully');
+                    console.log('🔒 [LOCK] Developer info from server:', config.developer);
+                    if (devNameEl) {
+                        devNameEl.textContent = config.developer.name;
+                        console.log('🔒 [LOCK] Developer name updated:', config.developer.name);
+                    }
+                    if (devEmailEl) {
+                        devEmailEl.textContent = config.developer.email;
+                        console.log('🔒 [LOCK] Developer email updated:', config.developer.email);
+                    }
+                    if (devPhoneEl) {
+                        devPhoneEl.textContent = config.developer.phone;
+                        console.log('🔒 [LOCK] Developer phone updated:', config.developer.phone);
+                    }
+                    if (devUpdateEl) {
+                        devUpdateEl.textContent = config.developer.lastUpdate;
+                        console.log('🔒 [LOCK] Developer last update updated:', config.developer.lastUpdate);
+                    }
+
+                    // تحديث الشارة من env_config
+                    updateBadge();
+
+                    console.log('🔒 [LOCK] App config loaded successfully');
+                    return config;
                 })
                 .catch(error => {
-                    console.error('Error loading config :', error);
-                    console.warn('Using default values');
+                    console.error('🔒 [LOCK] Error loading config:', error);
+                    console.warn('🔒 [LOCK] Using default values');
+                    return null;
                 });
+        }
+
+        // تحديث الشارة من env_config
+        function updateBadge() {
+            console.log('🔒 [LOCK] Updating badge...');
+            console.log('🔒 [LOCK] appConfig:', appConfig);
+            console.log('🔒 [LOCK] currentLang:', currentLang);
+            console.log('🔒 [LOCK] translations[currentLang]:', translations[currentLang]);
+            if (appConfig && appConfig.badge && appConfig.badge.lastUpdate) {
+                const badgePrefix = translations[currentLang]?.badge_prefix || 'آخر تحديث: ';
+                const badgeSuffix = translations[currentLang]?.badge_suffix || ' | سياسة خصوصية شاملة';
+                const badgeContent = badgePrefix + appConfig.badge.lastUpdate + badgeSuffix;
+                document.getElementById('page-badge').innerHTML = badgeContent;
+                console.log('🔒 [LOCK] Badge updated:', badgeContent);
+            } else {
+                console.log('🔒 [LOCK] Badge not updated - missing data');
+            }
         }
 
         // تحديث اللغة
         function updateLanguage(lang) {
+            console.log('🔒 [LOCK] Updating language to:', lang);
             currentLang = lang;
             document.querySelectorAll('[data-key]').forEach(element => {
                 const key = element.getAttribute('data-key');
@@ -767,6 +829,7 @@
                     element.innerHTML = translations[lang][key];
                 }
             });
+            console.log('🔒 [LOCK] Language updated to:', lang);
 
             // تحديث المخططات Mermaid
             const mermaidElements = document.querySelectorAll('.mermaid');
@@ -809,7 +872,11 @@
             if (translations[lang]) {
                 document.getElementById('page-title').innerHTML = translations[lang].title || 'سياسة الخصوصية - PassManger';
                 document.getElementById('page-subtitle').innerHTML = translations[lang].subtitle || 'PassManger - حماية بياناتك الشخصية';
-                document.getElementById('page-badge').innerHTML = translations[lang].badge || 'آخر تحديث: 2025-12-10 | سياسة خصوصية شاملة';
+                console.log('🔒 [LOCK] Page title and subtitle updated');
+                // تحديث الشارة من env_config (فقط إذا تم تحميل config)
+                if (appConfig) {
+                    updateBadge();
+                }
             }
 
             // تحديث اتجاه النص للفارسية والفرنسية
@@ -823,27 +890,46 @@
                 document.documentElement.setAttribute('dir', 'ltr');
                 document.documentElement.setAttribute('lang', lang);
             }
+            console.log('🔒 [LOCK] Text direction updated for language:', lang);
 
             // تحديث الأزرار النشطة
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById(`lang-${lang}`).classList.add('active');
+            console.log('🔒 [LOCK] Language button activated:', lang);
         }
 
         // معالجات الأزرار
-        document.getElementById('lang-ar').addEventListener('click', () => updateLanguage('ar'));
-        document.getElementById('lang-en').addEventListener('click', () => updateLanguage('en'));
-        document.getElementById('lang-fa').addEventListener('click', () => updateLanguage('fa'));
-        document.getElementById('lang-fr').addEventListener('click', () => updateLanguage('fr'));
+        document.getElementById('lang-ar').addEventListener('click', () => {
+            console.log('🔒 [LOCK] Arabic button clicked');
+            updateLanguage('ar');
+        });
+        document.getElementById('lang-en').addEventListener('click', () => {
+            console.log('🔒 [LOCK] English button clicked');
+            updateLanguage('en');
+        });
+        document.getElementById('lang-fa').addEventListener('click', () => {
+            console.log('🔒 [LOCK] Persian button clicked');
+            updateLanguage('fa');
+        });
+        document.getElementById('lang-fr').addEventListener('click', () => {
+            console.log('🔒 [LOCK] French button clicked');
+            updateLanguage('fr');
+        });
 
         function toggleAdvanced(sectionId) {
+            console.log('🔒 [LOCK] Toggle advanced section:', sectionId);
             const content = document.getElementById(sectionId + '-advanced');
             content.classList.toggle('show');
+            console.log('🔒 [LOCK] Advanced section toggled:', sectionId);
         }
 
         function showSecurityTools() {
+            console.log('🔒 [LOCK] Show security tools button clicked');
             const message = translations[currentLang]?.coming_soon || 'قريباً: سيتم إضافة المزيد من أدوات الأمان المتقدمة\n\n- فاحص الملفات\n- أداة التشفير\n- أداة التحقق من البيانات';
             alert(message);
         }
+
+        console.log('🔒 [LOCK] Script initialization completed');
     </script>
 </body>
 </html>
